@@ -1,8 +1,8 @@
 from players.information import Player
+from tournament_information.tournament import Tournament
 
 def main():
-
-    Player.update_information()
+    tournament = Tournament.get_tournament_information()
+    tournament.store_tournament_information()
 
 main()
-

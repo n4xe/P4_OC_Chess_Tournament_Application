@@ -17,7 +17,7 @@ class Player:
         self._information = information
 
     @classmethod
-    def from_input(cls):
+    def input_get_player_information(cls):
         first_name = input("Enter player's first name: ")
         last_name = input("Enter player's last name: ")
         birthday_date = input("Enter player's birthday date (DD/MM/YYYY): ")
@@ -27,20 +27,16 @@ class Player:
         return cls(first_name, last_name, birthday_date, chess_identification, information)
 
     def store_player_information(self):
-        if os.path.isfile('players/database players.json'):
-            with open('players/database players.json', 'r') as file:
+        if os.path.isfile('players/players_database.json'):
+            with open('players/players_database.json', 'r') as file:
                 existing_data = json.load(file)
 
         else:
             existing_data = []
 
-        print(existing_data)
-        print(self._information)
-
         existing_data.append(self._information)
-        print(existing_data)
 
-        with open('players/database players.json', 'w') as file:
+        with open('players/players_database.json', 'w') as file:
             json.dump(existing_data, file, indent=4)
             file.write('\n')  # Add a new line after the entries
 
@@ -53,8 +49,8 @@ class Player:
               "has correctily been registered. He/She is", age, "years old")
 
     @classmethod
-    def update_information(cls):
-        with open('players/database players.json', 'r') as file:
+    def update_player_information(cls):
+        with open('players/players_database.json', 'r') as file:
             existing_data = json.load(file)
 
         first_name = input("Enter the first name of the player information you want to update: ")
@@ -96,7 +92,7 @@ class Player:
         if not found_player:
             print("No player found with the given name.")
 
-        with open('players/database players.json', 'w') as file:
+        with open('players/players_database.json', 'w') as file:
             json.dump(existing_data, file, indent=4)
             file.write('\n')  # Add a new line after the entries
 

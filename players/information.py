@@ -17,7 +17,10 @@ class Player:
         self._information = information
 
     @classmethod
-    def input_get_player_information(cls):
+    def get_player_information(cls):
+        """
+        Ask information to user about first name, name, birthday date and ID of the player to be added.
+        """
         first_name = input("Enter player's first name: ")
         last_name = input("Enter player's last name: ")
         birthday_date = input("Enter player's birthday date (DD/MM/YYYY): ")
@@ -26,7 +29,11 @@ class Player:
                    "Chess ID": chess_identification}
         return cls(first_name, last_name, birthday_date, chess_identification, information)
 
-    def store_player_information(self):
+    def set_player_information(self):
+        """
+        The information stored in the dictionary "information" thanks to the method "input_get_player_information"
+        is stored in the players_database.json file
+        """
         if os.path.isfile('players/players_database.json'):
             with open('players/players_database.json', 'r') as file:
                 existing_data = json.load(file)
@@ -48,8 +55,14 @@ class Player:
         print("The player", self._information["First name"], self._information["Last name"],
               "has correctily been registered. He/She is", age, "years old")
 
+
+class PlayerController:
     @classmethod
     def update_player_information(cls):
+        """
+        This method allows to the user to update information of a player already stored in the json database file.
+        :return:
+        """
         with open('players/players_database.json', 'r') as file:
             existing_data = json.load(file)
 

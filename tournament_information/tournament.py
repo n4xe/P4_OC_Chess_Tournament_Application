@@ -49,8 +49,8 @@ class Tournament:
             existing_data = []
 
         self._information["Actual round"] = self._actual_round
-        self._information["Round list"] = self._round_list
         self._information["Number of rounds"] = self._number_of_rounds
+        self._information["Round list"] = self._round_list
         existing_data.append(self._information)
 
         with open('tournament_information/tournament_database.json', 'w') as file:
@@ -60,27 +60,21 @@ class Tournament:
         print("The", self._name, "tournament has been created. It is located in ", self._place, "where ",
               ", ".join(str(player) for player in self._player_list), "will try to win it.")
 
-
-    def score_update(self):
-
-        pass
-
+    def start_round(self):
+        self._actual_round += 1
+        with open('tournament_information/tournament_database.json', 'r+') as file:
+            data = json.load(file)
+            for tournament_data in data:
+                if tournament_data['Name'] == self._name:
+                    tournament_data["Actual round"] = self._actual_round
+            file.seek(0)
+            json.dump(data, file, indent=4)
+            file.truncate()
 
     @classmethod
     def add_a_player(cls):
         with open('tournament_information/tournament_database.json', 'r') as file:
             existing_data = json.load(file)
-
-    def start_round(self):
-        self._actual_round += 1
-        self._information["Actual round"] = self._actual_round
-        with open('tournament_information/tournament_database.json', 'r') as file:
-            data = json.load(file)
-            for tournament_data in data:
-                if tournament_data['Name'] == self._name:
-                    tournament_data["Actual round"] = self._actual_round
-            with open('tournament_information/tournament_database.json', 'w') as file:
-                json.dump(data, file, indent=4)
 
     @classmethod
     def clear_info(cls):

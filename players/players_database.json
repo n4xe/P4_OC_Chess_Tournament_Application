@@ -34,5 +34,29 @@
         "Last name": "Magdan",
         "Birthday date": "04/02/2002",
         "Chess ID": "CM205132"
+    },
+    {
+        "First name": "Pascale",
+        "Last name": "Simioni",
+        "Birthday date": "01/08/1965",
+        "Chess ID": "PS050612"
+    },
+    {
+        "First name": "Claire",
+        "Last name": "Torrent",
+        "Birthday date": "14/12/1998",
+        "Chess ID": "CT981214"
+    },
+    {
+        "First name": "Roos ",
+        "Last name": "Stakenburg",
+        "Birthday date": "23/10/1999",
+        "Chess ID": "RS991023"
+    },
+    {
+        "First name": "Lea",
+        "Last name": "Gineste",
+        "Birthday date": "04/11/1997",
+        "Chess ID": "LG119704"
     }
 ]

@@ -12,20 +12,20 @@ class Round:
     def get_match_list(cls):
         with open('tournament_information/tournament_database.json', 'r+') as file:
             tournament_data = json.load(file)
-            players = tournament_data[0]["Player list"]
+            players = tournament_data[-1]["Player list"]  # Utiliser le dernier tournoi
 
-            if tournament_data[0]['Actual round'] == 1:
+            if tournament_data[-1]['Actual round'] == 1:
                 random.shuffle(players)  # Randomly shuffle the players in the tournament
 
                 players_pair = []
-                for i in range(0, len(players), 2):  # Iteration of 2 in 2
+                for i in range(0, len(players), 2):  # Iteration de 2 en 2
                     if i + 1 < len(players):  # Check if there are 2 players left
                         players_pair.append([players[i], players[i + 1]])  # Creation of pairs
                         print(players_pair)
 
             else:
                 # Trier les joueurs en fonction de leur score
-                sorted_players = sorted(players, key=lambda player: tournament_data[0]["Players score"][player],
+                sorted_players = sorted(players, key=lambda player: tournament_data[-1]["Players score"][player],
                                         reverse=True)
 
                 # Générer les paires pour les matchs suivants
@@ -47,15 +47,15 @@ class Round:
             for i, match in enumerate(players_pair):
                 print(f"Match {i + 1}: {match}")
 
-            round_key = f"Round {tournament_data[0]['Actual round']}:"
+            round_key = f"Round {tournament_data[-1]['Actual round']}:"
             pairs_dict = {round_key: {"Match List": players_pair}}
 
             # Vérifier si la clé "Round list" existe et initialiser un dictionnaire vide si elle est None
-            if tournament_data[0]["Round list"] is None:
-                tournament_data[0]["Round list"] = {}
+            if tournament_data[-1].get("Round list") is None:
+                tournament_data[-1]["Round list"] = {}
 
             # Ajouter les nouvelles paires à la liste des matchs précédente
-            tournament_data[0]["Round list"].update(pairs_dict)
+            tournament_data[-1]["Round list"].update(pairs_dict)
 
             # Enregistrer les paires dans le fichier JSON du tournoi avec une indentation pour une meilleure lisibilité
             file.seek(0)
@@ -67,15 +67,15 @@ class Round:
     def add_score(self, match_results):
         with open('tournament_information/tournament_database.json', 'r+') as file:
             tournament_data = json.load(file)
-            round_key = f"Round {tournament_data[0]['Actual round']}:"
-            round_data = tournament_data[0]["Round list"][round_key]
+            round_key = f"Round {tournament_data[-1]['Actual round']}:"
+            round_data = tournament_data[-1]["Round list"][round_key]
 
             # Add the match results
             round_data["Match Result"] = match_results
 
             # Calculate the players' scores
-            player_list = tournament_data[0]["Player list"]
-            scores = tournament_data[0].get("Players score", {player: 0 for player in player_list})
+            player_list = tournament_data[-1]["Player list"]
+            scores = tournament_data[-1].get("Players score", {player: 0 for player in player_list})
             for match_result in match_results:
                 for player_result in match_result:
                     player = player_result[0]
@@ -83,9 +83,8 @@ class Round:
                     scores[player] = scores.get(player, 0) + score  # Add score to existing or initialize if not exists
 
             # Update the players' scores in the tournament data
-            tournament_data[0]["Number of rounds"] = tournament_data[0].get("Number of rounds",
-                                                                            0)  # Ensure the "Number of rounds" key exists
-            tournament_data[0]["Players score"] = scores
+            tournament_data[-1]["Number of rounds"] = tournament_data[-1].get("Number of rounds", 0)
+            tournament_data[-1]["Players score"] = scores
 
             # Rewrite the updated data to the file
             file.seek(0)

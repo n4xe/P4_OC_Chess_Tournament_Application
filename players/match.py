@@ -12,9 +12,10 @@ class Match:
     def player_pairs(cls):
         with open('tournament_information/tournament_database.json', 'r') as file:
             tournament_data = json.load(file)
-            actual_round = tournament_data[0]['Actual round']
+            last_tournament = tournament_data[-1]
+            actual_round = last_tournament['Actual round']
             round_key = f"Round {actual_round}:"
-            pairs_data = tournament_data[0]["Round list"][round_key]["Match List"]
+            pairs_data = last_tournament["Round list"][round_key]["Match List"]
             player_pairs = []
             for pair in pairs_data:
                 player1 = pair[0]
@@ -26,7 +27,6 @@ class Match:
     def perform_match(self):
         """Effectuer les matchs selon les paires définies"""
         match_results = []
-
         for pair in self._player_pairs:
             player1 = pair[0]
             player2 = pair[1]
@@ -47,8 +47,11 @@ class Match:
     def store_results(self, match_results):
         with open('tournament_information/tournament_database.json', 'r+') as file:
             tournament_data = json.load(file)
-            round_key = f"Round {tournament_data[0]['Actual round']}:"
-            round_data = tournament_data[0]["Round list"][round_key]
+            last_tournament_index = len(tournament_data) - 1
+            last_tournament = tournament_data[last_tournament_index]
+            actual_round = last_tournament['Actual round']
+            round_key = f"Round {actual_round}:"
+            round_data = last_tournament["Round list"][round_key]
 
             # Add "Match Result" key to the round data
             round_data["Match Result"] = match_results

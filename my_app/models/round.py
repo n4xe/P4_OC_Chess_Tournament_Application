@@ -21,7 +21,6 @@ class Round:
                 for i in range(0, len(players), 2):  # Iteration de 2 en 2
                     if i + 1 < len(players):  # Check if there are 2 players left
                         players_pair.append([players[i], players[i + 1]])  # Creation of pairs
-                        print(players_pair)
 
             else:
                 # Trier les joueurs en fonction de leur score
@@ -61,7 +60,6 @@ class Round:
             file.seek(0)
             json.dump(tournament_data, file, indent=4)
 
-            print(players_pair)
             return cls(players_pair)
 
     def add_score(self, match_results):

@@ -1,7 +1,11 @@
-from players.information import *
-from tournament_information.tournament import *
-from players.match import Match
-from players.round import Round
+from views.player_view import PlayerView
+from views.tournament_view import TournamentView
+from models.player import Player
+from models.tournament import Tournament
+from models.match import Match
+from models.round import Round
+from controllers.player_controller import PlayerController
+from controllers.tournament_controller import TournamentControl
 
 def main():
     print("Welcome to the application!")
@@ -10,7 +14,7 @@ def main():
 
     while True:
         print("\nMain Menu:")
-        print("1. Create a tournament")
+        print("1. Create a tournament\n")
         print("2. View information")
         print("3. Settings and modifications")
         print("q. Quit")
@@ -20,8 +24,7 @@ def main():
         if choice == "1":
             print("\nCreate Tournament Menu:")
             print("1. Add a player")
-            print("2. Set tournament")
-            print("3. Start tournament")
+            print("2. Start tournament")
             print("b. Back to main menu")
 
             create_tournament_choice = input("Choose an option: ")
@@ -33,15 +36,20 @@ def main():
             elif create_tournament_choice == "2":
                 tournament = Tournament.get_tournament_information()
                 tournament.set_tournament_information()
-                pass
-            elif create_tournament_choice == "3":
                 for round_number in range(1, tournament._number_of_rounds + 1):
+                    print("\n Round ", round_number, "\n")
                     tournament.start_round()
                     current_round = Round.get_match_list()
                     current_match = Match.player_pairs()
                     current_match_results = current_match.perform_match()
                     current_match.store_results(current_match_results)
                     current_round.add_score(current_match_results)
+
+                    # Demander à l'utilisateur s'il souhaite continuer au prochain round
+                    user_input = input(
+                        "Press ""Y"" to continue : ")
+                    if user_input.lower() != "y":
+                        break
                 pass
             elif create_tournament_choice == "b":
                 continue
@@ -54,7 +62,6 @@ def main():
             print("2. View players by alphabetical order")
             print("3. View all tournaments")
             print("4. Search tournament")
-            print("5. Round list")
             print("b. Back to main menu")
 
             view_information_choice = input("Choose an option: ")
@@ -70,9 +77,7 @@ def main():
             elif view_information_choice == "4":
                 # Search tournament logic
                 pass
-            elif view_information_choice == "5":
-                # Round list logic
-                pass
+
             elif view_information_choice == "b":
                 continue
             else:
@@ -88,13 +93,13 @@ def main():
             settings_choice = input("Choose an option: ")
 
             if settings_choice == "1":
-                # Delete tournament logic
+                TournamentControl.delete_tournament()
                 pass
             elif settings_choice == "2":
-                # Delete player logic
+                PlayerController.remove_player()
                 pass
             elif settings_choice == "3":
-                # Modify a player logic
+                PlayerController.update_player_information()
                 pass
             elif settings_choice == "b":
                 continue

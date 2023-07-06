@@ -1,0 +1,680 @@
+[
+    {
+        "Name": "Tournoi de Wijk aan Zee",
+        "Place": "Wijk aan Zee",
+        "Starting date": "01/01/2024",
+        "Ending date": "23/01/2024",
+        "Player list": [
+            "Lea Gineste",
+            "Totsi Rapi",
+            "Claire Torrent",
+            "Roos  Stakenburg",
+            "Pascale Simioni",
+            "Remilu Galagu",
+            "Jilu Magdan",
+            "Valentin Simioni",
+            "Tins Linch",
+            "Guigs Gastion"
+        ],
+        "Description": "Most famous tournament in the world",
+        "Actual round": 4,
+        "Number of rounds": 4,
+        "Round list": {
+            "Round 1:": {
+                "Match List": [
+                    [
+                        "Lea Gineste",
+                        "Totsi Rapi"
+                    ],
+                    [
+                        "Claire Torrent",
+                        "Roos  Stakenburg"
+                    ],
+                    [
+                        "Pascale Simioni",
+                        "Remilu Galagu"
+                    ],
+                    [
+                        "Jilu Magdan",
+                        "Valentin Simioni"
+                    ],
+                    [
+                        "Tins Linch",
+                        "Guigs Gastion"
+                    ]
+                ],
+                "Match Result": [
+                    [
+                        [
+                            "Lea Gineste",
+                            0
+                        ],
+                        [
+                            "Totsi Rapi",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "Claire Torrent",
+                            1
+                        ],
+                        [
+                            "Roos  Stakenburg",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Pascale Simioni",
+                            1
+                        ],
+                        [
+                            "Remilu Galagu",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Jilu Magdan",
+                            0.5
+                        ],
+                        [
+                            "Valentin Simioni",
+                            0.5
+                        ]
+                    ],
+                    [
+                        [
+                            "Tins Linch",
+                            0
+                        ],
+                        [
+                            "Guigs Gastion",
+                            1
+                        ]
+                    ]
+                ]
+            },
+            "Round 2:": {
+                "Match List": [
+                    [
+                        "Totsi Rapi",
+                        "Claire Torrent"
+                    ],
+                    [
+                        "Pascale Simioni",
+                        "Guigs Gastion"
+                    ],
+                    [
+                        "Jilu Magdan",
+                        "Valentin Simioni"
+                    ],
+                    [
+                        "Lea Gineste",
+                        "Roos  Stakenburg"
+                    ],
+                    [
+                        "Remilu Galagu",
+                        "Tins Linch"
+                    ]
+                ],
+                "Match Result": [
+                    [
+                        [
+                            "Totsi Rapi",
+                            1
+                        ],
+                        [
+                            "Claire Torrent",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Pascale Simioni",
+                            1
+                        ],
+                        [
+                            "Guigs Gastion",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Jilu Magdan",
+                            0.5
+                        ],
+                        [
+                            "Valentin Simioni",
+                            0.5
+                        ]
+                    ],
+                    [
+                        [
+                            "Lea Gineste",
+                            1
+                        ],
+                        [
+                            "Roos  Stakenburg",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Remilu Galagu",
+                            0
+                        ],
+                        [
+                            "Tins Linch",
+                            1
+                        ]
+                    ]
+                ]
+            },
+            "Round 3:": {
+                "Match List": [
+                    [
+                        "Totsi Rapi",
+                        "Pascale Simioni"
+                    ],
+                    [
+                        "Lea Gineste",
+                        "Claire Torrent"
+                    ],
+                    [
+                        "Jilu Magdan",
+                        "Valentin Simioni"
+                    ],
+                    [
+                        "Tins Linch",
+                        "Guigs Gastion"
+                    ],
+                    [
+                        "Roos  Stakenburg",
+                        "Remilu Galagu"
+                    ]
+                ],
+                "Match Result": [
+                    [
+                        [
+                            "Totsi Rapi",
+                            0.5
+                        ],
+                        [
+                            "Pascale Simioni",
+                            0.5
+                        ]
+                    ],
+                    [
+                        [
+                            "Lea Gineste",
+                            0.5
+                        ],
+                        [
+                            "Claire Torrent",
+                            0.5
+                        ]
+                    ],
+                    [
+                        [
+                            "Jilu Magdan",
+                            1
+                        ],
+                        [
+                            "Valentin Simioni",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Tins Linch",
+                            1
+                        ],
+                        [
+                            "Guigs Gastion",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Roos  Stakenburg",
+                            1
+                        ],
+                        [
+                            "Remilu Galagu",
+                            0
+                        ]
+                    ]
+                ]
+            },
+            "Round 4:": {
+                "Match List": [
+                    [
+                        "Totsi Rapi",
+                        "Pascale Simioni"
+                    ],
+                    [
+                        "Jilu Magdan",
+                        "Tins Linch"
+                    ],
+                    [
+                        "Lea Gineste",
+                        "Claire Torrent"
+                    ],
+                    [
+                        "Roos  Stakenburg",
+                        "Valentin Simioni"
+                    ],
+                    [
+                        "Guigs Gastion",
+                        "Remilu Galagu"
+                    ]
+                ],
+                "Match Result": [
+                    [
+                        [
+                            "Totsi Rapi",
+                            0.5
+                        ],
+                        [
+                            "Pascale Simioni",
+                            0.5
+                        ]
+                    ],
+                    [
+                        [
+                            "Jilu Magdan",
+                            0
+                        ],
+                        [
+                            "Tins Linch",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "Lea Gineste",
+                            1
+                        ],
+                        [
+                            "Claire Torrent",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Roos  Stakenburg",
+                            0.5
+                        ],
+                        [
+                            "Valentin Simioni",
+                            0.5
+                        ]
+                    ],
+                    [
+                        [
+                            "Guigs Gastion",
+                            0.5
+                        ],
+                        [
+                            "Remilu Galagu",
+                            0.5
+                        ]
+                    ]
+                ]
+            }
+        },
+        "Players score": {
+            "Lea Gineste": 2.5,
+            "Totsi Rapi": 3.0,
+            "Claire Torrent": 1.5,
+            "Roos  Stakenburg": 1.5,
+            "Pascale Simioni": 3.0,
+            "Remilu Galagu": 0.5,
+            "Jilu Magdan": 2.0,
+            "Valentin Simioni": 1.5,
+            "Tins Linch": 3,
+            "Guigs Gastion": 1.5
+        }
+    },
+    {
+        "Name": "Tournoi de la rivalit\u00e9",
+        "Place": "Strasbourg",
+        "Starting date": "15/06/2023",
+        "Ending date": "17/07/2023",
+        "Player list": [
+            "Jilu Magdan",
+            "Tins Linch",
+            "Lea Gineste",
+            "Roos  Stakenburg",
+            "Totsi Rapi",
+            "Valentin Simioni",
+            "Pascale Simioni",
+            "Claire Torrent",
+            "Guigs Gastion",
+            "Remilu Galagu"
+        ],
+        "Description": "Tournoi des rivaux",
+        "Actual round": 4,
+        "Number of rounds": 4,
+        "Round list": {
+            "Round 1:": {
+                "Match List": [
+                    [
+                        "Jilu Magdan",
+                        "Tins Linch"
+                    ],
+                    [
+                        "Lea Gineste",
+                        "Roos  Stakenburg"
+                    ],
+                    [
+                        "Totsi Rapi",
+                        "Valentin Simioni"
+                    ],
+                    [
+                        "Pascale Simioni",
+                        "Claire Torrent"
+                    ],
+                    [
+                        "Guigs Gastion",
+                        "Remilu Galagu"
+                    ]
+                ],
+                "Match Result": [
+                    [
+                        [
+                            "Jilu Magdan",
+                            1
+                        ],
+                        [
+                            "Tins Linch",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Lea Gineste",
+                            0.5
+                        ],
+                        [
+                            "Roos  Stakenburg",
+                            0.5
+                        ]
+                    ],
+                    [
+                        [
+                            "Totsi Rapi",
+                            0
+                        ],
+                        [
+                            "Valentin Simioni",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "Pascale Simioni",
+                            0
+                        ],
+                        [
+                            "Claire Torrent",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "Guigs Gastion",
+                            0.5
+                        ],
+                        [
+                            "Remilu Galagu",
+                            0.5
+                        ]
+                    ]
+                ]
+            },
+            "Round 2:": {
+                "Match List": [
+                    [
+                        "Jilu Magdan",
+                        "Valentin Simioni"
+                    ],
+                    [
+                        "Claire Torrent",
+                        "Lea Gineste"
+                    ],
+                    [
+                        "Roos  Stakenburg",
+                        "Guigs Gastion"
+                    ],
+                    [
+                        "Remilu Galagu",
+                        "Tins Linch"
+                    ],
+                    [
+                        "Totsi Rapi",
+                        "Pascale Simioni"
+                    ]
+                ],
+                "Match Result": [
+                    [
+                        [
+                            "Jilu Magdan",
+                            0
+                        ],
+                        [
+                            "Valentin Simioni",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "Claire Torrent",
+                            0.5
+                        ],
+                        [
+                            "Lea Gineste",
+                            0.5
+                        ]
+                    ],
+                    [
+                        [
+                            "Roos  Stakenburg",
+                            0.5
+                        ],
+                        [
+                            "Guigs Gastion",
+                            0.5
+                        ]
+                    ],
+                    [
+                        [
+                            "Remilu Galagu",
+                            1
+                        ],
+                        [
+                            "Tins Linch",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Totsi Rapi",
+                            0.5
+                        ],
+                        [
+                            "Pascale Simioni",
+                            0.5
+                        ]
+                    ]
+                ]
+            },
+            "Round 3:": {
+                "Match List": [
+                    [
+                        "Valentin Simioni",
+                        "Claire Torrent"
+                    ],
+                    [
+                        "Remilu Galagu",
+                        "Jilu Magdan"
+                    ],
+                    [
+                        "Lea Gineste",
+                        "Roos  Stakenburg"
+                    ],
+                    [
+                        "Guigs Gastion",
+                        "Totsi Rapi"
+                    ],
+                    [
+                        "Pascale Simioni",
+                        "Tins Linch"
+                    ]
+                ],
+                "Match Result": [
+                    [
+                        [
+                            "Valentin Simioni",
+                            0.5
+                        ],
+                        [
+                            "Claire Torrent",
+                            0.5
+                        ]
+                    ],
+                    [
+                        [
+                            "Remilu Galagu",
+                            0
+                        ],
+                        [
+                            "Jilu Magdan",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "Lea Gineste",
+                            1
+                        ],
+                        [
+                            "Roos  Stakenburg",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Guigs Gastion",
+                            1
+                        ],
+                        [
+                            "Totsi Rapi",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Pascale Simioni",
+                            0
+                        ],
+                        [
+                            "Tins Linch",
+                            1
+                        ]
+                    ]
+                ]
+            },
+            "Round 4:": {
+                "Match List": [
+                    [
+                        "Valentin Simioni",
+                        "Jilu Magdan"
+                    ],
+                    [
+                        "Lea Gineste",
+                        "Claire Torrent"
+                    ],
+                    [
+                        "Guigs Gastion",
+                        "Remilu Galagu"
+                    ],
+                    [
+                        "Tins Linch",
+                        "Roos  Stakenburg"
+                    ],
+                    [
+                        "Totsi Rapi",
+                        "Pascale Simioni"
+                    ]
+                ],
+                "Match Result": [
+                    [
+                        [
+                            "Valentin Simioni",
+                            1
+                        ],
+                        [
+                            "Jilu Magdan",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Lea Gineste",
+                            1
+                        ],
+                        [
+                            "Claire Torrent",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Guigs Gastion",
+                            1
+                        ],
+                        [
+                            "Remilu Galagu",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Tins Linch",
+                            1
+                        ],
+                        [
+                            "Roos  Stakenburg",
+                            0
+                        ]
+                    ],
+                    [
+                        [
+                            "Totsi Rapi",
+                            0
+                        ],
+                        [
+                            "Pascale Simioni",
+                            1
+                        ]
+                    ]
+                ]
+            }
+        },
+        "Players score": {
+            "Jilu Magdan": 2,
+            "Tins Linch": 2,
+            "Lea Gineste": 3.0,
+            "Roos  Stakenburg": 1.0,
+            "Totsi Rapi": 0.5,
+            "Valentin Simioni": 3.5,
+            "Pascale Simioni": 1.5,
+            "Claire Torrent": 2.0,
+            "Guigs Gastion": 3.0,
+            "Remilu Galagu": 1.5
+        }
+    }
+]

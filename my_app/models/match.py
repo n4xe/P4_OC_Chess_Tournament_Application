@@ -21,7 +21,6 @@ class Match:
                 player1 = pair[0]
                 player2 = pair[1]
                 player_pairs.append((player1, player2))
-            print(player_pairs)
         return cls(player_pairs)
 
     def perform_match(self):

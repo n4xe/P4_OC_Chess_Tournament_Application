@@ -81,35 +81,3 @@ class Tournament:
     def clear_info(cls):
         with open('tournament_information/tournament_database.json', 'w') as file:
             json.dump([], file)
-
-class TournamentView:
-
-    @classmethod
-    def display_tournaments(cls):
-        with open('tournament_information/tournament_database.json', 'r') as file:
-            tournaments_data = json.load(file)
-
-        # Affichage des tournois avec numéros
-        for i, tournament in enumerate(tournaments_data, start=1):
-            name = tournament['Name']
-            print(f"Tournoi {i}: {name}")
-
-        # Demande à l'utilisateur de sélectionner un tournoi
-        selected_tournament = input("Veuillez entrer le numéro du tournoi : ")
-
-        # Vérification de la validité du numéro de tournoi
-        if not selected_tournament.isdigit() or int(selected_tournament) < 1 or int(selected_tournament) > len(
-                tournaments_data):
-            print("Numéro de tournoi invalide.")
-        else:
-            index = int(selected_tournament) - 1
-            tournament = tournaments_data[index]
-            name = tournament['Name']
-            starting_date = tournament['Starting date']
-            ending_date = tournament['Ending date']
-            location = tournament['Place']
-            print("Détails du tournoi sélectionné :")
-            print(f"Nom du tournoi : {name}")
-            print(f"Date de démarrage : {starting_date}")
-            print(f"Date de fin : {ending_date}")
-            print(f"Lieu : {location}")

@@ -1,3 +1,6 @@
+import json
+
+
 class PlayerController:
     @classmethod
     def update_player_information(cls):
@@ -5,7 +8,7 @@ class PlayerController:
         This method allows to the user to update information of a player already stored in the json database file.
         :return:
         """
-        with open('players/players_database.json', 'r') as file:
+        with open('data/players_database.json', 'r') as file:
             existing_data = json.load(file)
 
         first_name = input("Enter the first name of the player information you want to update: ")
@@ -47,25 +50,25 @@ class PlayerController:
         if not found_player:
             print("No player found with the given name.")
 
-        with open('players/players_database.json', 'w') as file:
+        with open('data/players_database.json', 'w') as file:
             json.dump(existing_data, file, indent=4)
             file.write('\n')  # Add a new line after the entries
 
     @classmethod
     def remove_player(cls):
-        with open('players/players_database.json', 'r') as file:
+        with open('data/players_database.json', 'r') as file:
             players_data = json.load(file)
 
-        # Affichage des joueurs avec numéros
+        # Player's number display
         for i, player in enumerate(players_data, start=1):
             first_name = player['First name']
             last_name = player['Last name']
             print(f"Player {i}: {first_name} {last_name}")
 
-        # Demande à l'utilisateur de sélectionner un joueur à supprimer
+        # Ask user to select a player to delete
         selected_player = input("Please enter the list number of the player to delete : ")
 
-        # Vérification de la validité du numéro de joueur
+        # Check player's number validity
         if not selected_player.isdigit() or int(selected_player) < 1 or int(selected_player) > len(players_data):
             print("Invalid number, please try again.")
         else:
@@ -75,8 +78,6 @@ class PlayerController:
             last_name = deleted_player['Last name']
             print(f"Player '{first_name} {last_name}' successfully deleted.")
 
-            # Mise à jour du fichier JSON
-            with open('players/players_database.json', 'w') as file:
+            # JSON update
+            with open('data/players_database.json', 'w') as file:
                 json.dump(players_data, file, indent=4)
-
-

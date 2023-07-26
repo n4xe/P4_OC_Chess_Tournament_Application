@@ -1,19 +1,22 @@
+import json
+
+
 class TournamentView:
 
     @classmethod
     def display_tournaments(cls):
-        with open('tournament_information/tournament_database.json', 'r') as file:
+        with open('data/tournament_database.json', 'r') as file:
             tournaments_data = json.load(file)
 
-        # Affichage des tournois avec numéros
+        # Tournament's number display
         for i, tournament in enumerate(tournaments_data, start=1):
             name = tournament['Name']
-            print(f"Tournoi {i}: {name}")
+            print(f"Tournament's {i}: {name}")
 
-        # Demande à l'utilisateur de sélectionner un tournoi
-        selected_tournament = input("Veuillez entrer le numéro du tournoi : ")
+        # Ask user to select a tournament
+        selected_tournament = input("Please enter the tournament's number: ")
 
-        # Vérification de la validité du numéro de tournoi
+        # Check number validity
         if not selected_tournament.isdigit() or int(selected_tournament) < 1 or int(selected_tournament) > len(
                 tournaments_data):
             print("Invalid tournament number.")
@@ -35,12 +38,12 @@ class TournamentView:
 
             if choice.lower() == "yes":
                 player_list = tournament["Player list"]
-                print("Joueurs du tournoi (ordre alphabétique) :")
+                print("Players by alphabetical order :")
                 for player in sorted(player_list):
                     print(player)
 
             choice = input(
-                "Tournament details: Would you like to see the rounds/matchs (yes/no) ")
+                "Tournament details: Would you like to see the rounds/matches (yes/no) ")
             if choice.lower() == "yes":
                 round_list = tournament["Round list"]
                 for round_name, round_data in round_list.items():

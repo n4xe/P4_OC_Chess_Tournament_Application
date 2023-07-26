@@ -1,16 +1,15 @@
-from views.player_view import PlayerView
-from views.tournament_view import TournamentView
-from models.player import Player
-from models.tournament import Tournament
-from models.match import Match
-from models.round import Round
-from controllers.player_controller import PlayerController
-from controllers.tournament_controller import TournamentControl
+from my_app.views.player_view import PlayerView
+from my_app.views.tournament_view import TournamentView
+from my_app.models.player import Player
+from my_app.models.tournament import Tournament
+from my_app.models.match import Match
+from my_app.models.round import Round
+from my_app.controllers.player_controller import PlayerController
+from my_app.controllers.tournament_controller import TournamentControl
+
 
 def main():
     print("Welcome to the application!")
-
-    tournament = None
 
     while True:
         print("\nMain Menu:")
@@ -36,16 +35,17 @@ def main():
             elif create_tournament_choice == "2":
                 tournament = Tournament.get_tournament_information()
                 tournament.set_tournament_information()
-                for round_number in range(1, tournament._number_of_rounds + 1):
+                for round_number in range(1, tournament.number_of_rounds + 1):
                     print("\n Round ", round_number, "\n")
                     tournament.start_round()
                     current_round = Round.get_match_list()
+                    Round.add_date()
                     current_match = Match.player_pairs()
                     current_match_results = current_match.perform_match()
                     current_match.store_results(current_match_results)
                     current_round.add_score(current_match_results)
 
-                    # Demander à l'utilisateur s'il souhaite continuer au prochain round
+                    # Ask user if he wants to go next round
                     user_input = input(
                         "Press ""Y"" to continue : ")
                     if user_input.lower() != "y":
@@ -112,5 +112,6 @@ def main():
 
         else:
             print("Invalid option. Please try again.")
+
 
 main()

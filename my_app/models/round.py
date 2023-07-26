@@ -1,5 +1,7 @@
 import json
 import random
+from datetime import datetime, timedelta
+
 class Round:
     def __init__(self, match_list):
         self._match_list = match_list
@@ -10,9 +12,9 @@ class Round:
 
     @classmethod
     def get_match_list(cls):
-        with open('tournament_information/tournament_database.json', 'r+') as file:
+        with open('data/tournament_database.json', 'r+') as file:
             tournament_data = json.load(file)
-            players = tournament_data[-1]["Player list"]  # Utiliser le dernier tournoi
+            players = tournament_data[-1]["Player list"]  # Use the last tournament
 
             if tournament_data[-1]['Actual round'] == 1:
                 random.shuffle(players)  # Randomly shuffle the players in the tournament
@@ -23,11 +25,11 @@ class Round:
                         players_pair.append([players[i], players[i + 1]])  # Creation of pairs
 
             else:
-                # Trier les joueurs en fonction de leur score
+                # Sort players according to their score
                 sorted_players = sorted(players, key=lambda player: tournament_data[-1]["Players score"][player],
                                         reverse=True)
 
-                # Générer les paires pour les matchs suivants
+                # Generate pairs for next rounds
                 players_pair = []
                 used_players = set()
 
@@ -36,34 +38,75 @@ class Round:
                         player1 = sorted_players[i]
                         player2 = sorted_players[i + 1]
 
-                        # Vérifier si les joueurs se sont déjà affrontés
+                        # Check if players already played against
                         if (player1, player2) not in used_players and (player2, player1) not in used_players:
                             players_pair.append([player1, player2])
                             used_players.add((player1, player2))
                             used_players.add((player2, player1))
 
-            # Afficher les paires créées
+            # Display created pairs
             for i, match in enumerate(players_pair):
                 print(f"Match {i + 1}: {match}")
 
             round_key = f"Round {tournament_data[-1]['Actual round']}:"
             pairs_dict = {round_key: {"Match List": players_pair}}
 
-            # Vérifier si la clé "Round list" existe et initialiser un dictionnaire vide si elle est None
+            # Check if the "Round list" key exists and initialize an empty dictionary if it is None
             if tournament_data[-1].get("Round list") is None:
                 tournament_data[-1]["Round list"] = {}
 
-            # Ajouter les nouvelles paires à la liste des matchs précédente
+            # Add new pairs to previous match list
             tournament_data[-1]["Round list"].update(pairs_dict)
 
-            # Enregistrer les paires dans le fichier JSON du tournoi avec une indentation pour une meilleure lisibilité
+
+            # Save pairs in the tournament JSON file with indentation for better readability
             file.seek(0)
             json.dump(tournament_data, file, indent=4)
 
             return cls(players_pair)
 
+    @classmethod
+    def add_date(cls):
+        with open('data/tournament_database.json', 'r+') as file:
+            tournament_data = json.load(file)
+            round_key = f"Round {tournament_data[-1]['Actual round']}:"
+            round_data = tournament_data[-1]["Round list"][round_key]
+
+            # Calculate round dates
+            start_date = datetime.strptime(tournament_data[-1]['Starting date'], "%d/%m/%Y")
+            end_date = datetime.strptime(tournament_data[-1]['Ending date'], "%d/%m/%Y")
+            tournament_duration = end_date - start_date
+            round_duration = tournament_duration / tournament_data[-1]['Number of rounds']
+            round_start_date = start_date + round_duration * (tournament_data[-1]['Actual round'] - 1)
+            round_end_date = round_start_date + round_duration
+
+            # Adjust round start date based on previous rounds' end date
+            if tournament_data[-1]['Actual round'] > 1:
+                previous_round_key = f"Round {tournament_data[-1]['Actual round'] - 1}:"
+                previous_round_end_date = datetime.strptime(
+                    tournament_data[-1]["Round list"][previous_round_key]["Dates"]["End Date"], "%d/%m/%Y %H:%M"
+                )
+                round_start_date = max(round_start_date, previous_round_end_date)
+
+            # Define time range for round start and end
+            start_time_range = datetime.strptime("07:00", "%H:%M").time()
+            end_time_range = datetime.strptime("14:00", "%H:%M").time()
+
+            # Combine date and time for round start and end
+            round_start_date = datetime.combine(round_start_date.date(), start_time_range)
+            round_end_date = datetime.combine(round_end_date.date(), end_time_range)
+
+            round_data["Dates"] = {
+                "Start Date": round_start_date.strftime("%d/%m/%Y %H:%M"),
+                "End Date": round_end_date.strftime("%d/%m/%Y %H:%M")
+            }
+
+            # Save updated tournament data in the JSON file with indentation for better readability
+            file.seek(0)
+            json.dump(tournament_data, file, indent=4)
+
     def add_score(self, match_results):
-        with open('tournament_information/tournament_database.json', 'r+') as file:
+        with open('data/tournament_database.json', 'r+') as file:
             tournament_data = json.load(file)
             round_key = f"Round {tournament_data[-1]['Actual round']}:"
             round_data = tournament_data[-1]["Round list"][round_key]
@@ -88,3 +131,7 @@ class Round:
             file.seek(0)
             json.dump(tournament_data, file, indent=4)
             file.truncate()
+
+
+
+

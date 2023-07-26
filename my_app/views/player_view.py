@@ -1,9 +1,10 @@
 import json
 
+
 class PlayerView:
     @classmethod
     def display_players(cls):
-        with open('players/players_database.json', 'r') as file:
+        with open('data/players_database.json', 'r') as file:
             players_data = json.load(file)
 
         # Extract first name and last name from each player's data

@@ -1,7 +1,7 @@
 import random
 import json
 
-import datetime
+
 class Match:
     def __init__(self, player_pairs):
         self._player_pairs = player_pairs
@@ -10,7 +10,7 @@ class Match:
 
     @classmethod
     def player_pairs(cls):
-        with open('tournament_information/tournament_database.json', 'r') as file:
+        with open('data/tournament_database.json', 'r') as file:
             tournament_data = json.load(file)
             last_tournament = tournament_data[-1]
             actual_round = last_tournament['Actual round']
@@ -24,27 +24,27 @@ class Match:
         return cls(player_pairs)
 
     def perform_match(self):
-        """Effectuer les matchs selon les paires définies"""
+        """Perform matches according to defined pairs"""
         match_results = []
         for pair in self._player_pairs:
             player1 = pair[0]
             player2 = pair[1]
             # Simulation du match
-            winner = random.choice([player1, player2, None])  # Ajout de None pour représenter un match nul
+            winner = random.choice([player1, player2, None])  # Add None to represent a draw
             if winner == player1:
                 match_results.append(([player1, 1], [player2, 0]))
             elif winner == player2:
                 match_results.append(([player1, 0], [player2, 1]))
             else:
                 match_results.append(
-                    ([player1, 0.5], [player2, 0.5]))  # Les deux joueurs obtiennent un score de 0.5 en cas de match nul
+                    ([player1, 0.5], [player2, 0.5]))  # Both players score 0.5 in the event of a draw
 
         print(match_results)
 
         return match_results
 
     def store_results(self, match_results):
-        with open('tournament_information/tournament_database.json', 'r+') as file:
+        with open('data/tournament_database.json', 'r+') as file:
             tournament_data = json.load(file)
             last_tournament_index = len(tournament_data) - 1
             last_tournament = tournament_data[last_tournament_index]

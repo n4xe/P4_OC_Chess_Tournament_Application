@@ -1,11 +1,12 @@
 import json
 import os
-import random
+
 
 class Tournament:
     """
        attributes : name, place, starting date, description, player list, round list, number of rounds
     """
+
     def __init__(self, name, place, starting_date, ending_date, description, player_list, information, actual_round=0,
                  round_list=None, number_of_rounds=4):
 
@@ -17,7 +18,7 @@ class Tournament:
         self._player_list = player_list
         self._description = description
         self._actual_round = actual_round
-        self._number_of_rounds = number_of_rounds
+        self.number_of_rounds = number_of_rounds
         self._information = information
 
     @classmethod
@@ -29,11 +30,11 @@ class Tournament:
         starting_date = input("Enter tournament_information's starting date (DD/MM/YYYY): ")
         ending_date = input("Enter tournament_information's ending date (DD/MM/YYYY): ")
         description = input("Enter tournament_information's description: ")
-        with open('players/players_database.json', 'r') as file:
+        with open('data/players_database.json', 'r') as file:
             player_data = json.load(file)
 
         player_list = [f"{player['First name']} {player['Last name']}" for player in player_data]
-        information = {"Name": name, "Place": place, "Starting date": starting_date, "Ending date":ending_date,
+        information = {"Name": name, "Place": place, "Starting date": starting_date, "Ending date": ending_date,
                        "Player list": player_list, "Description": description}
         print(information)
 
@@ -42,19 +43,19 @@ class Tournament:
     def set_tournament_information(self):
         """Save the information previously given by user into a json file"""
 
-        if os.path.isfile('tournament_information/tournament_database.json'):
-            with open('tournament_information/tournament_database.json', 'r') as file:
+        if os.path.isfile('data/tournament_database.json'):
+            with open('data/tournament_database.json', 'r') as file:
                 existing_data = json.load(file)
 
         else:
             existing_data = []
 
         self._information["Actual round"] = self._actual_round
-        self._information["Number of rounds"] = self._number_of_rounds
+        self._information["Number of rounds"] = self.number_of_rounds
         self._information["Round list"] = self._round_list
         existing_data.append(self._information)
 
-        with open('tournament_information/tournament_database.json', 'w') as file:
+        with open('data/tournament_database.json', 'w') as file:
             json.dump(existing_data, file, indent=4)
             file.write('\n')  # Add a new line after the entries
 
@@ -63,7 +64,7 @@ class Tournament:
 
     def start_round(self):
         self._actual_round += 1
-        with open('tournament_information/tournament_database.json', 'r+') as file:
+        with open('data/tournament_database.json', 'r+') as file:
             data = json.load(file)
             for tournament_data in data:
                 if tournament_data['Name'] == self._name:
@@ -73,11 +74,6 @@ class Tournament:
             file.truncate()
 
     @classmethod
-    def add_a_player(cls):
-        with open('tournament_information/tournament_database.json', 'r') as file:
-            existing_data = json.load(file)
-
-    @classmethod
     def clear_info(cls):
-        with open('tournament_information/tournament_database.json', 'w') as file:
+        with open('data/tournament_database.json', 'w') as file:
             json.dump([], file)

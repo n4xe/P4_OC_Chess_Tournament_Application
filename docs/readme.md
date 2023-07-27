@@ -28,5 +28,8 @@ Follow the on-screen instructions to create a new tournament, add players, start
 
 Tournament information is automatically saved in the tournament_information/tournament_database.json file.
 
+To start a flake 8 repport, please install flake 8 and flake8-html and paste in the terminal : 
+"flake8 --max-line-length=119 my_app --format=html --htmldir=flake8_rapport"
+
 Authors
 Valentin Simioni

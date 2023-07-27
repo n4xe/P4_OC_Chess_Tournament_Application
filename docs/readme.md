@@ -15,7 +15,7 @@ Save tournament information in a JSON file for later resumption.
 Installation
 Clone this repository to your local machine using the command:
 
-git clone https://github.com/your-username/board-game-tournament.git
+git clone https://github.com/n4xe/P4_OC_Chess_Tournament_Application/tree/master/
 Make sure you have Python 3.10.7 installed on your machine.
 
 Install the required dependencies using the command:

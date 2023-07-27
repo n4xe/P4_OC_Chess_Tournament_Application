@@ -59,26 +59,18 @@ def main():
 
         elif choice == "2":
             print("\nView Information Menu:")
-            print("1. View results")
-            print("2. View players by alphabetical order")
-            print("3. View all tournaments")
-            print("4. Search tournament")
+            print("1. View players by alphabetical order")
+            print("2. View all tournaments")
             print("b. Back to main menu")
 
             view_information_choice = input("Choose an option: ")
 
             if view_information_choice == "1":
-                pass
-            elif view_information_choice == "2":
                 PlayerView.display_players()
                 pass
-            elif view_information_choice == "3":
+            elif view_information_choice == "2":
                 TournamentView.display_tournaments()
                 pass
-            elif view_information_choice == "4":
-                # Search tournament logic
-                pass
-
             elif view_information_choice == "b":
                 continue
             else:

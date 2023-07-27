@@ -9,12 +9,13 @@ from my_app.controllers.tournament_controller import TournamentControl
 
 
 def main():
-    print("Welcome to the application!")
+    print("Welcome to the local chess application! Please, use the menu by entering the corresponding numbers"
+          "to the desired items")
 
     while True:
         print("\nMain Menu:")
-        print("1. Create a tournament\n")
-        print("2. View information")
+        print("1. Player and Tournament creation")
+        print("2. Information and data")
         print("3. Settings and modifications")
         print("q. Quit")
 

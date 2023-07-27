@@ -1,6 +1,7 @@
 import json
 import random
-from datetime import datetime, timedelta
+from datetime import datetime
+
 
 class Round:
     def __init__(self, match_list):
@@ -57,7 +58,6 @@ class Round:
 
             # Add new pairs to previous match list
             tournament_data[-1]["Round list"].update(pairs_dict)
-
 
             # Save pairs in the tournament JSON file with indentation for better readability
             file.seek(0)
@@ -131,7 +131,3 @@ class Round:
             file.seek(0)
             json.dump(tournament_data, file, indent=4)
             file.truncate()
-
-
-
-

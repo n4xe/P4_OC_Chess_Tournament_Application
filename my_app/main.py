@@ -6,37 +6,23 @@ from my_app.models.match import Match
 from my_app.models.round import Round
 from my_app.controllers.player_controller import PlayerController
 from my_app.controllers.tournament_controller import TournamentControl
+from my_app.views.main_view import MainView
 
 
 def main():
-    print("Welcome to the local chess application! Please, use the menu by entering the corresponding numbers"
-          "to the desired items")
-
     while True:
-        print("\nMain Menu:")
-        print("1. Player and Tournament creation")
-        print("2. Information and data")
-        print("3. Settings and modifications")
-        print("q. Quit")
-
-        choice = input("Choose an option: ")
+        choice = MainView.main_menu()
 
         if choice == "1":
-            print("\nCreate Tournament Menu:")
-            print("1. Add a player")
-            print("2. Start tournament")
-            print("b. Back to main menu")
-
-            create_tournament_choice = input("Choose an option: ")
-
-            if create_tournament_choice == "1":
-                player = Player.get_player_information()
-                player.set_player_information()
-                pass
-            elif create_tournament_choice == "2":
-                tournament = Tournament.get_tournament_information()
-                tournament.set_tournament_information()
-                for round_number in range(1, tournament.number_of_rounds + 1):
+           first_menu_choice = MainView.first_menu()
+           if first_menu_choice == "1":
+               player = Player.get_player_information()
+               player.set_player_information()
+               pass
+           elif first_menu_choice == "2":
+               tournament = Tournament.get_tournament_information()
+               tournament.set_tournament_information()
+               for round_number in range(1, tournament.number_of_rounds + 1):
                     print("\n Round ", round_number, "\n")
                     tournament.start_round()
                     current_round = Round.get_match_list()
@@ -46,65 +32,52 @@ def main():
                     current_match.store_results(current_match_results)
                     current_round.add_score(current_match_results)
 
-                    # Ask user if he wants to go next round
                     user_input = input(
                         "Press ""Y"" to continue : ")
                     if user_input.lower() != "y":
                         break
-                pass
-            elif create_tournament_choice == "b":
+                        pass
+           elif first_menu_choice == "b":
                 continue
-            else:
-                print("Invalid option. Please try again.")
+           else:
+                MainView.invalid_option()
 
         elif choice == "2":
-            print("\nView Information Menu:")
-            print("1. View players by alphabetical order")
-            print("2. View all tournaments")
-            print("b. Back to main menu")
+            second_menu_choice = MainView.second_menu()
 
-            view_information_choice = input("Choose an option: ")
-
-            if view_information_choice == "1":
+            if second_menu_choice == "1":
                 PlayerView.display_players()
                 pass
-            elif view_information_choice == "2":
+            elif second_menu_choice == "2":
                 TournamentView.display_tournaments()
                 pass
-            elif view_information_choice == "b":
+            elif second_menu_choice == "b":
                 continue
             else:
-                print("Invalid option. Please try again.")
+                MainView.invalid_option()
 
         elif choice == "3":
-            print("\nSettings and Modification Menu:")
-            print("1. Delete tournament")
-            print("2. Delete player")
-            print("3. Modify a player")
-            print("b. Back to main menu")
-
-            settings_choice = input("Choose an option: ")
-
-            if settings_choice == "1":
+            third_menu_choice = MainView.third_menu()
+            if third_menu_choice == "1":
                 TournamentControl.delete_tournament()
                 pass
-            elif settings_choice == "2":
+            elif third_menu_choice == "2":
                 PlayerController.remove_player()
                 pass
-            elif settings_choice == "3":
+            elif third_menu_choice == "3":
                 PlayerController.update_player_information()
                 pass
-            elif settings_choice == "b":
+            elif third_menu_choice == "b":
                 continue
             else:
-                print("Invalid option. Please try again.")
+                MainView.invalid_option()
 
         elif choice == "q":
-            print("Thank you for using the application. Goodbye!")
+            MainView.goodbye()
             break
 
         else:
-            print("Invalid option. Please try again.")
+            MainView.invalid_option()
 
 
 main()
